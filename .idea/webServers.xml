@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3ca862a2-64b6-4f6a-a777-4a36a0dacee2" name="translatorbbdd -&gt; RaspiServer" url="http://karserver.duckdns.org">
+        <fileTransfer host="karserver.duckdns.org" port="22" rootFolder="/var/hdd/www/translatorbbdd" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
