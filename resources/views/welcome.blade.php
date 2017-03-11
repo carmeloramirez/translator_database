@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>TraductorBBDD</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Styles -->
     <style>
         html, body {
@@ -27,7 +28,6 @@
 
         .flex-center {
             align-items: center;
-            display: flex;
             justify-content: center;
         }
 
@@ -59,43 +59,84 @@
             text-transform: uppercase;
         }
 
+        footer {
+            position: fixed;
+            height: 100px;
+            bottom: 0;
+            width: 100%;
+        }
+
         .m-b-md {
             margin-bottom: 30px;
+        }
+        .container {
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @if (Auth::check())
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ url('/login') }}">Login</a>
-                <a href="{{ url('/register') }}">Register</a>
-            @endif
+
+<div class="container">
+
+    <div class="content col-lg-4">
+
+        <div class="text-justify">
+            <h1>Que hace esto?</h1>
+            <hr>
+
+            <p>Utiliza una base de datos relacional de tal manera que cuando se selecciona un elemento en este caso
+                país, podremos decidir las traducciones del mismo, por lo que cada uno de los paises dispone de sus
+                datos en 2 idiomas, en este caso solo dos pero pueden ser los que uno quiera y por supuesto con
+                todos los contenidos traducidos que uno desee.</p>
+            <hr>
+            <h3>Carmelo Ramirez</h3>
         </div>
-    @endif
+        <div>
+            <ul>
+                <li>
+                    <span>App:getLocate -> </span><code>{{ App::getLocale() }}</code>
+                </li>
+            </ul>
+        </div>
 
-    <div class="content">
+    </div>
+    <div class="well content col-lg-8">
+        <div class="text-center">
+            <h1>Selecciona Idioma</h1>
+        </div>
 
-        <div><a href="{{ url('/', ['ca']) }}">Cat</a></div>
-        <div><a href="{{ url('/', ['es']) }}">Es</a></div>
+            <div><a href="{{ url('/ca', App::getLocale()) }}"><i class="fa hand-o-right"></i> Català</a></div>
+
+            <div><a href="{{ url('/de', App::getLocale()) }}"><i class="fa hand-o-right"></i> Alemán</a></div>
+
+        <div class="text-center">
+            <h1>Ver datos de país</h1>
+        </div>
+
+        <div class="text-center">
+            <a href="{{ url('/'. App::getLocale().'/ca') }}"><img width="90px;"
+                        class="" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/200px-Flag_of_Catalonia.svg.png"
+                        alt=""></a>
+            <a href="{{ url('/'. App::getLocale().'/de') }}"><img width="100px;" class=""
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Schwarz_Rot_Gold.svg/220px-Schwarz_Rot_Gold.svg.png"
+                        alt=""></a>
+        </div>
+
+
 
 
         <div class="title m-b-md">
-            @lang('messages.laravel')
+            {{ $translation->name }}
         </div>
-        <div class=""><h1>@lang('messages.welcome')</h1></div>
+        <div class="text-center"><p>{{ $translation->history }}</p></div>
 
-        <div class="links">
-            <a href="https://laravel.com/docs">@lang('messages.documentation')</a>
-            <a href="https://laracasts.com">Laracasts</a>
-            <a href="https://laravel-news.com">@lang('messages.news')</a>
-            <a href="https://forge.laravel.com">Forge</a>
-            <a href="https://github.com/laravel/laravel">GitHub</a>
+        <div class="">
         </div>
     </div>
+    <!--<footer class="navbar-fixed-bottom">
+
+
+    </footer>-->
 </div>
 </body>
 </html>

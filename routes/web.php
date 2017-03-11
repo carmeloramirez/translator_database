@@ -11,14 +11,16 @@
 |
 */
 
+use App\Country;
 
+/*
 
-
-
-    Route::get('/{lang?}', function ($lang = 'es') {
+    Route::get('/}', function ($lang = 'es') {
         session(['lang' => $lang]);
         return view('welcome');
     })->where([
         'lang' => 'ca|es'
     ]);
 
+*/
+Route::get('/{lang?}/{nation?}', 'TranslatorController@translate');
